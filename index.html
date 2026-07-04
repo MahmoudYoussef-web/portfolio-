@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mahmoud Youssef - Final-year Computer Science student specializing in backend development with Java and Spring Boot. Builder of production-grade backend systems with security, concurrency, and REST API design. View my projects.">
+    <title>Mahmoud Youssef | Backend Developer (Java / Spring Boot)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">Mahmoud Youssef</div>
+        <div style="display: flex; align-items: center;">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <img src="./assets/moon.svg" alt="Toggle theme" class="icon" id="theme-icon">
+            </button>
+        </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+        <div class="logo">Mahmoud Youssef</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+        </div>
+        <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle theme">
+            <img src="./assets/moon.svg" alt="Toggle theme" class="icon" id="theme-icon-mobile">
+        </button>
+    </nav>
+
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/profile-pic.jpeg" alt="Mahmoud Youssef's Profile Picture">
+        </div>
+        <div class="section__text">
+            <p class="section__text__p1">Computer Science Student</p>
+            <h1 class="title">Mahmoud Youssef</h1>
+            <p class="section__text__p2">Junior Backend Developer | Java & Spring Boot</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('./assets/Mahmoud_Youssef_Resume.pdf')">Resume / CV</button>
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn Profile" class="icon" onclick="location.href='https://www.linkedin.com/in/mahmoud-youssef-ba30723bb'">
+                <img src="./assets/github.png" alt="GitHub Profile" class="icon" onclick="location.href='https://github.com/MahmoudYoussef-web'">
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <p class="section__text__p1">so, who am I?</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/about-pic.jpeg" alt="Profile Picture" class="about-pic">
+            </div>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="Core Stack Icon" class="icon">
+                        <h3>Core Stack</h3>
+                        <p>Java, Spring Boot<br>Spring Security, JWT/RBAC<br>MySQL, PostgreSQL, Redis<br>Docker, Flyway Migrations<br>REST API Design, SOLID Principles</p>
+                    </div>
+                    <div class="details-container">
+                        <img src="./assets/education.png" alt="Education Icon" class="icon">
+                        <h3>Education</h3>
+                        <p>El Shorouk Academy, Cairo, Egypt<br>Bachelor of Science (B.Sc.)<br>Computer Science - Final Year<br>Expected Graduation: June 2026</p>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <ul class="about-bullets">
+                        <li>Final-year Computer Science student at El Shorouk Academy, focused on backend engineering with Java and Spring Boot.</li>
+                        <li>Built 6+ production-grade backend systems covering e-commerce, logistics, workforce management, and AI-powered applications — with real concurrency handling (pessimistic/optimistic locking), JWT/RBAC security, and idempotent payment flows.</li>
+                        <li>Led the backend security layer (JWT, RBAC, Spring Security) on CalCounter, my graduation project — a calorie-tracking app with AI food recognition, built and shipped with a teammate and now live with real users.</li>
+                        <li>Comfortable across the full backend stack: MySQL, PostgreSQL, Redis, Docker, Flyway migrations, and REST API design following SOLID and Clean Architecture principles.</li>
+                        <li>Actively applying for Junior Backend Developer roles, open to remote and on-site opportunities.</li>
+                        <li>Outside of code: story-driven single-player video games, reading web novels and manga, and recently picked up chess.</li>
+                        <li>Always open to a conversation — feel free to reach out below.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <img src="./assets/arrow.png" alt="Arrow Icon" class="icon arrow" onclick="location.href='./#projects'">
+    </section>
+    <section id="projects">
+      <p class="section__text__p1">check out my</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="./assets/project-1.png" alt="CalCounter Project" class="project-img">
+            </div>
+            <h2 class="experience-sub-title project-title">CalCounter — AI-Powered Nutrition Tracking</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/calorie-tracker-backend'">GitHub</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://calcounter-rec.web.app/'">Live App</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://youtu.be/R5qRao_UabE'">Demo Video</button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="./assets/project-2.jpeg" alt="LogiBridge Project" class="project-img">
+            </div>
+            <h2 class="experience-sub-title project-title">LogiBridge — B2B Order Management Platform</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/logibridge-backend'">GitHub</button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="./assets/project-3.png" alt="E-Commerce Backend Project" class="project-img">
+            </div>
+            <h2 class="experience-sub-title project-title">E-Commerce Backend System</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/ecommerce-backend'">GitHub</button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="./assets/project-4.png" alt="Attendance Management API Project" class="project-img">
+            </div>
+            <h2 class="experience-sub-title project-title">Attendance Management API — QR-Based Workforce Tracking</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/attendance-management-api'">GitHub</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://youtu.be/RaPOdxhk2Wg'">Demo Video</button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="./assets/project-5.png" alt="University Timetable Scheduler Project" class="project-img">
+            </div>
+            <h2 class="experience-sub-title project-title">University Timetable Scheduler</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/Time-Table'">GitHub</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://youtu.be/i8DS_dlUWkE'">Demo Video</button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img src="./assets/project-6.png" alt="Distributed URL Shortener Project" class="project-img">
+            </div>
+            <h2 class="experience-sub-title project-title">Distributed URL Shortener</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/url-shortener-system'">GitHub</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+        <p class="section__text__p1">be sure to get in touch!</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon">
+                <p><a href="mailto:mahmoudyoussef29@gmail.com">mahmoudyoussef29@gmail.com</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon">
+                <p><a href="https://www.linkedin.com/in/mahmoud-youssef-ba30723bb">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright &copy; <span id="year"></span> Mahmoud Youssef. All Rights Reserved.</p>
+    </footer>
+    <script src = "script.js"></script>
+</body>
+</html>
