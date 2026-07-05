@@ -600,8 +600,9 @@ article div {
 .project-description {
     font-size: 0.85rem;
     color: var(--text-color-light);
-    margin: 0 1rem 1rem;
+    margin: 0 1rem;
     line-height: 1.5;
+    flex: 1;
 }
     display: flex;
     flex-wrap: wrap;
@@ -623,7 +624,7 @@ article div {
 }
 
 .color-container .btn-container {
-    margin-top: auto;
+    margin-top: 0.25rem;
     padding-bottom: 1rem;
 }
 
