@@ -602,7 +602,6 @@ article div {
     color: var(--text-color-light);
     margin: 0 1rem 0.75rem;
     line-height: 1.5;
-    flex: 1;
 }
 
 .color-container .btn-container {
