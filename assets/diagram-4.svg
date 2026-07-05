@@ -1,0 +1,22 @@
+<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="250" fill="#1a1a1a"/>
+  <rect x="20" y="100" width="80" height="36" rx="6" fill="none" stroke="#00ff88" stroke-width="2"/>
+  <text x="60" y="123" text-anchor="middle" fill="#fff" font-size="12" font-family="Poppins,sans-serif">Client</text>
+  <line x1="100" y1="118" x2="130" y2="118" stroke="#00ff88" stroke-width="2"/>
+  <polygon points="130,113 140,118 130,123" fill="#00ff88"/>
+  <rect x="140" y="50" width="120" height="36" rx="6" fill="none" stroke="#00ff88" stroke-width="2"/>
+  <text x="200" y="73" text-anchor="middle" fill="#fff" font-size="11" font-family="Poppins,sans-serif">Spring Boot</text>
+  <rect x="140" y="95" width="120" height="36" rx="6" fill="none" stroke="#00ff88" stroke-width="2"/>
+  <text x="200" y="111" text-anchor="middle" fill="#fff" font-size="9" font-family="Poppins,sans-serif">Event-Driven</text>
+  <text x="200" y="123" text-anchor="middle" fill="#00ff88" font-size="9" font-family="Poppins,sans-serif">Webhooks</text>
+  <line x1="200" y1="86" x2="200" y2="95" stroke="#555" stroke-width="1.5" stroke-dasharray="4"/>
+  <line x1="260" y1="68" x2="285" y2="68" stroke="#00ff88" stroke-width="2"/>
+  <polygon points="285,63 295,68 285,73" fill="#00ff88"/>
+  <rect x="295" y="50" width="90" height="36" rx="6" fill="none" stroke="#00ff88" stroke-width="2"/>
+  <text x="340" y="73" text-anchor="middle" fill="#fff" font-size="10" font-family="Poppins,sans-serif">Stripe</text>
+  <line x1="200" y1="131" x2="200" y2="165" stroke="#00ff88" stroke-width="2"/>
+  <polygon points="195,165 200,175 205,165" fill="#00ff88"/>
+  <rect x="140" y="175" width="120" height="36" rx="6" fill="none" stroke="#00ff88" stroke-width="2"/>
+  <text x="200" y="198" text-anchor="middle" fill="#fff" font-size="11" font-family="Poppins,sans-serif">MySQL + Redis</text>
+  <text x="200" y="240" text-anchor="middle" fill="#666" font-size="11" font-family="Poppins,sans-serif">E-Commerce Backend System</text>
+</svg>
