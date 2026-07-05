@@ -21,14 +21,66 @@
             </button>
         </div>
     </nav>
-    <section id="projects" style="min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <section id="projects">
         <p class="section__text__p1">Case Study</p>
         <h1 class="title">Distributed URL Shortener</h1>
-        <p style="margin-top: 2rem; font-size: 1.2rem; color: var(--text-color-light); max-width: 600px;">
-            Detailed architecture, tradeoffs, and implementation notes coming soon.
-        </p>
-        <div class="btn-container" style="margin-top: 2rem;">
-            <button class="btn btn-color-2" onclick="location.href='../index.html#projects'">Back to Projects</button>
+        <div class="case-study">
+            <h2>Problem</h2>
+            <p>Most URL shorteners look simple on the surface, but at scale they hit real distributed-systems problems: how do you generate unique short codes without a single point of contention, how do you serve redirects fast enough that the cache layer doesn't become the bottleneck, and how do you rate-limit abusive traffic without race conditions. This project was built specifically to confront those problems rather than ship a toy CRUD app — the goal was to simulate how a system like Bitly operates under real traffic, not just replicate its feature list.</p>
+
+            <h2>Architecture</h2>
+            <pre>
+Client
+   ↓
+Spring Boot (Stateless)
+   ↓
+Redis
+  ├── Cache (read acceleration)
+  ├── ID Generator (atomic INCR)
+  └── Rate Limiter (Lua script)
+   ↓
+Shard Router (hash % N)
+   ↓
+MySQL Shards (source of truth)</pre>
+            <p>The service layer is stateless, which means any instance can handle any request — all coordination happens through Redis and the shard router, not through in-memory state.</p>
+
+            <h2>Key Design Decisions</h2>
+
+            <h3>No ORM — Raw JDBC.</h3>
+            <p>JPA was deliberately excluded. The repository layer uses <code>JdbcTemplate</code> directly with explicit shard routing. This trades away Hibernate's convenience for full control over query execution, eliminates N+1 risk by construction, and keeps the persistence layer transparent — every query is visible, not generated.</p>
+
+            <h3>Distributed ID generation via Redis INCR.</h3>
+            <p>Rather than relying on database auto-increment (which doesn't work cleanly across shards) or UUIDs (which are long and not URL-friendly), the system uses Redis's atomic <code>INCR</code> command to generate a globally unique integer, then encodes it to Base62 for a short, URL-safe code. If Redis becomes unavailable, an <code>AtomicLong</code> fallback keeps the system running in degraded mode instead of failing outright.</p>
+
+            <h3>Cache-aside, not cache-through.</h3>
+            <p>Redis is treated strictly as a performance layer — MySQL is always the source of truth. On a redirect, a cache hit returns immediately; a cache miss queries the database, populates the cache, and returns. Critically, the cache TTL is derived from the URL's actual <code>expires_at</code> value in the database rather than a fixed offset, so the cache and the database can never disagree about whether a link is still valid.</p>
+
+            <h3>Deterministic sharding with no routing table.</h3>
+            <p>Shard selection is computed as <code>Math.abs(shortCode.hashCode()) % SHARD_COUNT</code>. Because the formula is deterministic, any node can independently route any request without consulting a shared routing table — removing a potential single point of failure. Per-shard <code>JdbcTemplate</code> instances are created lazily and cached, so adding a shard is a configuration change, not a code change.</p>
+
+            <h2>Challenges &amp; Tradeoffs</h2>
+
+            <h3>The rate limiter's race condition.</h3>
+            <p>The naive approach to rate limiting — <code>INCR</code> the counter, then <code>EXPIRE</code> it — has a subtle bug: if the process crashes between the two commands, the key never expires and the rate limit becomes permanent for that client. The fix was to move both operations into a single atomic Lua script executed by Redis, so the increment and the expiry either both happen or neither does. This is a good example of a bug that only shows up under real concurrent load, not in a quick manual test.</p>
+
+            <h3>Fail-open vs fail-closed.</h3>
+            <p>For rate limiting specifically, the system is fail-open: if Redis is unavailable, requests pass through rather than being blocked. This was a deliberate tradeoff — an outage in Redis should degrade the user experience (no rate limiting), not take down the whole API.</p>
+
+            <h3>Expiration correctness under cache staleness.</h3>
+            <p>Since Redis TTL is only a hint and MySQL is authoritative, every database query explicitly filters <code>WHERE expires_at IS NULL OR expires_at > NOW()</code> at the SQL level. This guarantees an expired link is never served, even in the edge case of a Redis cache miss right after expiry.</p>
+
+            <h2>Results</h2>
+            <ul>
+                <li>Zero ID collisions by construction (atomic Redis <code>INCR</code>, not a probabilistic scheme)</li>
+                <li>No N+1 query risk, by using raw JDBC instead of an ORM</li>
+                <li>Race-condition-free rate limiting via a single atomic Lua script</li>
+                <li>Horizontal scaling requires only a configuration change (incrementing <code>SHARD_COUNT</code> and adding a datasource entry) — no code changes to the routing logic</li>
+            </ul>
+
+            <hr>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="location.href='../index.html#projects'">Back to Projects</button>
+            </div>
         </div>
     </section>
     <footer>

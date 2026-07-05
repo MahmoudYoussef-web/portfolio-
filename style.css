@@ -677,6 +677,81 @@ article div {
     cursor: default;
 }
 
+/* CASE STUDY PAGES */
+
+.case-study {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+.case-study h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.case-study h2 {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.case-study h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.case-study p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: var(--text-color-light);
+    font-size: 1rem;
+}
+
+.case-study ul, .case-study ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+    color: var(--text-color-light);
+    line-height: 1.8;
+}
+
+.case-study li {
+    margin-bottom: 0.5rem;
+}
+
+.case-study pre {
+    background: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.case-study strong {
+    color: var(--text-color);
+}
+
+.case-study em {
+    color: var(--accent-color);
+}
+
+.case-study hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
 /* FOOTER SECTION */
 
 footer {

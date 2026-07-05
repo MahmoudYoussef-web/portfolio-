@@ -21,14 +21,52 @@
             </button>
         </div>
     </nav>
-    <section id="projects" style="min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <section id="projects">
         <p class="section__text__p1">Case Study</p>
-        <h1 class="title">LogiBridge — B2B Order Management Platform</h1>
-        <p style="margin-top: 2rem; font-size: 1.2rem; color: var(--text-color-light); max-width: 600px;">
-            Detailed architecture, tradeoffs, and implementation notes coming soon.
-        </p>
-        <div class="btn-container" style="margin-top: 2rem;">
-            <button class="btn btn-color-2" onclick="location.href='../index.html#projects'">Back to Projects</button>
+        <h1 class="title">LogiBridge — B2B Delivery Integration Platform</h1>
+        <div class="case-study">
+            <h2>Problem</h2>
+            <p>Coordinating between shipping companies and last-mile delivery providers is traditionally a manual process — phone calls, spreadsheets, no shared source of truth. LogiBridge replaces that with a single API-driven platform, but the real engineering problem isn't the CRUD surface — it's guaranteeing correctness when multiple people (a company dispatcher, a delivery agent, a mobile app retrying a failed request) try to mutate the same order at the same time.</p>
+
+            <h2>Architecture</h2>
+            <pre>
+Controller → Service → Repository → Entity</pre>
+            <p>The system follows a layered architecture with domain logic living inside the entity layer (a lightweight DDD approach): services orchestrate business operations, but entities themselves enforce valid state transitions. An idempotency layer and a concurrency-control layer sit between the controller and the service layer, protecting the domain from unsafe duplicate or concurrent mutations before they ever reach business logic.</p>
+
+            <h2>Key Design Decisions</h2>
+
+            <h3>Dual-layer idempotency.</h3>
+            <p>Network retries are a fact of production systems — if a delivery agent's mobile app times out and retries an "accept order" request, the system must not process it twice. LogiBridge solves this two ways: a DB-backed layer (<code>IdempotencyService</code>) that stores the first response against a unique <code>(key, userId)</code> constraint and replays it on retry, and a Redis-backed layer for sub-millisecond deduplication using <code>SET key IN_PROGRESS NX EX 300</code> as an atomic acquire. If two requests race on the same key at the database layer, the resulting constraint violation is caught and the losing thread simply returns the winner's stored response instead of erroring.</p>
+
+            <h3>Two independent concurrency mechanisms, not one.</h3>
+            <p>Pessimistic locking (<code>PESSIMISTIC_WRITE</code>) is acquired on the order row before any state-changing operation — accept, reject, cancel, status update — so concurrent requests wait rather than race. Independently, the <code>Order</code> entity also carries an optimistic <code>@Version</code> field, so if a concurrent write does slip through, the second transaction fails fast with a retryable exception instead of silently overwriting data. The state machine (<code>OrderStatus.canTransitionTo()</code>) acts as a third, domain-level guard — even if both locking mechanisms were somehow bypassed, an invalid transition is rejected before persistence.</p>
+
+            <h3>Roles are never client-supplied.</h3>
+            <p>The role a user receives is determined entirely by which registration endpoint they call (<code>/register/company</code> vs <code>/register/delivery</code>), not by a field in the request body — closing off a privilege-escalation vector at the design level rather than relying on validation to catch it.</p>
+
+            <h3>Refresh token rotation with reuse detection.</h3>
+            <p>Every token refresh invalidates the previous token and issues a new one. If a previously-revoked token is ever presented again, that's treated as a signal of token theft, and all sessions for that user are invalidated — not just the one session.</p>
+
+            <h2>Challenges &amp; Tradeoffs</h2>
+
+            <h3>Choosing pessimistic AND optimistic locking, not one or the other.</h3>
+            <p>Pessimistic locking alone would be sufficient in theory, but relying on a single mechanism means a single class of bug (e.g., a code path that forgets to acquire the lock) has no safety net. Layering optimistic versioning on top costs a small amount of complexity but means a missed lock fails loudly (an exception) instead of silently corrupting order state.</p>
+
+            <h3>Immutable audit trail.</h3>
+            <p><code>OrderTracking</code> records are made genuinely immutable — a <code>@PreUpdate</code> hook throws <code>UnsupportedOperationException</code> if any update is attempted — enforced at the ORM level, not just by convention. The tradeoff is that correcting a bad tracking record requires inserting a compensating record rather than editing history, which is the correct behavior for an audit trail but does add a small amount of friction during debugging.</p>
+
+            <h2>Results</h2>
+            <ul>
+                <li>Order accept/reject/cancel operations are provably exactly-once under concurrent access and network retries</li>
+                <li>Zero privilege-escalation surface for role assignment (role is never accepted from client input)</li>
+                <li>Tamper-proof audit trail enforced at the ORM layer, not just application logic</li>
+                <li>Test suite covers the three highest-risk areas specifically: auth logic, idempotency guarantees, and state-machine correctness — including a full end-to-end integration test that creates an order, accepts it, then retries the accept with the same idempotency key and asserts identical responses</li>
+            </ul>
+
+            <hr>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="location.href='../index.html#projects'">Back to Projects</button>
+            </div>
         </div>
     </section>
     <footer>

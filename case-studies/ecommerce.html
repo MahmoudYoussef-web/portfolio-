@@ -21,14 +21,54 @@
             </button>
         </div>
     </nav>
-    <section id="projects" style="min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <section id="projects">
         <p class="section__text__p1">Case Study</p>
         <h1 class="title">E-Commerce Backend System</h1>
-        <p style="margin-top: 2rem; font-size: 1.2rem; color: var(--text-color-light); max-width: 600px;">
-            Detailed architecture, tradeoffs, and implementation notes coming soon.
-        </p>
-        <div class="btn-container" style="margin-top: 2rem;">
-            <button class="btn btn-color-2" onclick="location.href='../index.html#projects'">Back to Projects</button>
+        <div class="case-study">
+            <h2>Problem</h2>
+            <p>An e-commerce backend touches almost every hard problem in backend engineering at once: payments that must never double-charge or double-fulfill, inventory that must never oversell, and financial records that must reconcile exactly. This project was built to handle the full commerce lifecycle — auth, catalog, cart, orders, Stripe payments, inventory, and financial reporting — with production-level reliability guarantees, not just a happy-path demo.</p>
+
+            <h2>Architecture</h2>
+            <pre>
+REST Controllers → Service Layer → Repository (JPA/MySQL)
+                                 ↘ Event Layer (OrderCreated, PaymentCompleted)
+                                     → Listeners/Handlers (inventory sync, finance journal entries)</pre>
+            <p>Design principles applied throughout: DTOs at the API boundary (entities never leave the service layer), centralized exception handling via <code>@RestControllerAdvice</code>, cache logic isolated into a dedicated <code>ProductCacheService</code>, and interface-first services for testability.</p>
+
+            <h2>Key Design Decisions</h2>
+
+            <h3>Idempotent Stripe webhook handling.</h3>
+            <p>Payment providers can and do deliver the same webhook more than once. The webhook endpoint verifies the <code>Stripe-Signature</code> header, independently validates the amount, currency, and ownership server-side before confirming an order, and safely ignores duplicate webhook deliveries — so a network hiccup on Stripe's side can never result in double-fulfilling an order.</p>
+
+            <h3>Two-phase inventory reservation instead of pessimistic row locks.</h3>
+            <p>Rather than locking product rows during checkout (which would hurt throughput under load), inventory uses an event-driven two-phase approach: creating an order publishes an <code>OrderCreatedEvent</code>, which triggers a temporary <code>StockReservation</code> that holds stock while payment is pending. A scheduled job releases reservations for orders that never complete payment. Once <code>PaymentCompletedEvent</code> fires, the reservation converts into a permanent <code>StockMovement</code> record. This prevents overselling without requiring locks on the hot path.</p>
+
+            <h3>Address snapshotting for order integrity.</h3>
+            <p>Shipping addresses are frozen at the moment of purchase rather than referenced live from the user's address book. This is a small decision with an outsized correctness benefit: a customer editing or deleting their saved address after ordering can never retroactively corrupt a historical order record.</p>
+
+            <h3>Double-entry bookkeeping for financial reporting.</h3>
+            <p>Revenue isn't just a summed column — it's modeled with <code>ChartOfAccount</code> and <code>JournalEntry</code> entities following double-entry accounting principles, which makes the financial reports auditable and internally consistent rather than just "close enough."</p>
+
+            <h2>Challenges &amp; Tradeoffs</h2>
+
+            <h3>Cache invalidation granularity.</h3>
+            <p>Product reads are cached in Redis through a dedicated <code>ProductCacheService</code>, with individual product entries kept warm via <code>@CachePut</code> on writes, while paginated listing caches are invalidated entirely (<code>@CacheEvict(allEntries = true)</code>) on any product write. This is a deliberate tradeoff: precise invalidation of every possible page/filter combination would be complex and error-prone, so the system accepts a slightly more aggressive cache eviction on the paginated endpoints in exchange for guaranteed correctness.</p>
+
+            <h3>Two webhook security schemes, not one.</h3>
+            <p>Stripe events are verified via Stripe's own signature header, while internal webhooks use a separate HMAC-based scheme with timestamp validation — both funneled through a shared <code>WebhookValidator</code> abstraction. Maintaining two schemes adds a small amount of code, but treating internal and third-party webhook trust boundaries identically would have been the wrong tradeoff.</p>
+
+            <h2>Results</h2>
+            <ul>
+                <li>Payment webhooks are provably idempotent — duplicate Stripe deliveries never double-fulfill an order</li>
+                <li>Zero overselling under concurrent checkout load, without pessimistic locks on the product table</li>
+                <li>Financial reports are internally consistent by construction (double-entry bookkeeping), not just summed estimates</li>
+                <li>Historical orders remain correct even if a customer's address book changes after purchase</li>
+            </ul>
+
+            <hr>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="location.href='../index.html#projects'">Back to Projects</button>
+            </div>
         </div>
     </section>
     <footer>
