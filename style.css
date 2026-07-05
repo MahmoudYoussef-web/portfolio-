@@ -595,7 +595,6 @@ article div {
     margin: 1rem 1rem 0.5rem;
     color: var(--text-color);
     font-size: 1.25rem;
-    flex: 1;
 }
 
 .project-description {
@@ -621,6 +620,11 @@ article div {
     color: var(--accent-color);
     background: transparent;
     white-space: nowrap;
+}
+
+.color-container .btn-container {
+    margin-top: auto;
+    padding-bottom: 1rem;
 }
 
 .project-btn {
