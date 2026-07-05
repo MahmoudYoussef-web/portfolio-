@@ -600,31 +600,13 @@ article div {
 .project-description {
     font-size: 0.85rem;
     color: var(--text-color-light);
-    margin: 0 1rem;
+    margin: 0 1rem 0.75rem;
     line-height: 1.5;
     flex: 1;
 }
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.4rem;
-    margin: 0 1rem 0.75rem;
-}
-
-.tech-badge {
-    display: inline-block;
-    padding: 0.2rem 0.55rem;
-    font-size: 0.7rem;
-    font-weight: 500;
-    border-radius: 1rem;
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    background: transparent;
-    white-space: nowrap;
-}
 
 .color-container .btn-container {
-    margin-top: 0.25rem;
+    margin-top: 0.75rem;
     padding-bottom: 1rem;
 }
 
