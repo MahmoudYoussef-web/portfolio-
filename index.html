@@ -47,9 +47,15 @@
             <img src="./assets/profile-pic.jpeg" alt="Mahmoud Youssef's Profile Picture">
         </div>
         <div class="section__text">
-            <p class="section__text__p1">Computer Science Student</p>
+            <p class="section__text__p1">Backend Engineer</p>
             <h1 class="title">Mahmoud Youssef</h1>
-            <p class="section__text__p2">Junior Backend Developer | Java & Spring Boot</p>
+            <p class="section__text__p2">Java • Spring Boot • Distributed Systems</p>
+            <div class="trust-badges">
+                <span class="badge">6+ Backend Projects</span>
+                <span class="badge">Java 21 &amp; Spring Boot 3</span>
+                <span class="badge">Distributed Systems &amp; Payments</span>
+                <span class="badge">Open to Remote Work</span>
+            </div>
             <div class="btn-container">
                 <button class="btn btn-color-2" onclick="window.open('./assets/Mahmoud_Youssef_Resume.pdf')">Resume / CV</button>
                 <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
@@ -57,6 +63,10 @@
             <div id="socials-container">
                 <img src="./assets/linkedin.png" alt="LinkedIn Profile" class="icon" onclick="location.href='https://www.linkedin.com/in/mahmoud-youssef-ba30723bb'">
                 <img src="./assets/github.png" alt="GitHub Profile" class="icon" onclick="location.href='https://github.com/MahmoudYoussef-web'">
+            </div>
+            <div class="social-btn-row">
+                <button class="btn btn-color-2" onclick="location.href='https://github.com/MahmoudYoussef-web'">GitHub Profile</button>
+                <button class="btn btn-color-2" onclick="location.href='https://www.linkedin.com/in/mahmoud-youssef-ba30723bb'">LinkedIn Profile</button>
             </div>
         </div>
     </section>
@@ -79,17 +89,22 @@
                         <h3>Education</h3>
                         <p>El Shorouk Academy, Cairo, Egypt<br>Bachelor of Science (B.Sc.)<br>Computer Science - Final Year<br>Expected Graduation: June 2026</p>
                     </div>
+                    <div class="details-container">
+                        <img src="./assets/checkmark.png" alt="Availability Icon" class="icon">
+                        <h3>Availability</h3>
+                        <p>📍 Cairo, Egypt<br>⚡ Immediate<br>🌍 Remote / Hybrid<br>🕐 GMT+3</p>
+                    </div>
                 </div>
                 <div class="text-container">
+                    <h3 class="about-heading">Who I Am</h3>
                     <ul class="about-bullets">
-                        <li>Final-year Computer Science student at El Shorouk Academy, focused on backend engineering with Java and Spring Boot.</li>
-                        <li>Built 6+ production-grade backend systems covering e-commerce, logistics, workforce management, and AI-powered applications — with real concurrency handling (pessimistic/optimistic locking), JWT/RBAC security, and idempotent payment flows.</li>
-                        <li>Led the backend security layer (JWT, RBAC, Spring Security) on CalCounter, my graduation project — a calorie-tracking app with AI food recognition, built and shipped with a teammate and now live with real users.</li>
-                        <li>Comfortable across the full backend stack: MySQL, PostgreSQL, Redis, Docker, Flyway migrations, and REST API design following SOLID and Clean Architecture principles.</li>
-                        <li>Actively applying for Junior Backend Developer roles, open to remote and on-site opportunities.</li>
-                        <li>Outside of code: story-driven single-player video games, reading web novels and manga, and recently picked up chess.</li>
-                        <li>Always open to a conversation — feel free to reach out below.</li>
+                        <li>Backend Engineer focused on Java &amp; Spring Boot.</li>
+                        <li>Built 6+ production-grade backend systems — e-commerce, logistics, workforce management, and AI-powered applications.</li>
+                        <li>Experience with Redis, Docker, PostgreSQL, and event-driven architecture.</li>
+                        <li>Interested in distributed systems and payments infrastructure.</li>
+                        <li>Led the backend security layer (JWT, RBAC, Spring Security) on CalCounter — a calorie-tracking app with AI food recognition, built with a teammate and live with real users.</li>
                     </ul>
+                    <p class="about-summary">Final-year Computer Science student at El Shorouk Academy, actively applying for Junior Backend Developer roles — remote or on-site. Outside of code: story-driven single-player games, web novels and manga, and recently picked up chess.</p>
                 </div>
             </div>
         </div>
@@ -105,6 +120,16 @@
               <img src="./assets/project-1.png" alt="CalCounter Project" class="project-img">
             </div>
             <h2 class="experience-sub-title project-title">CalCounter — AI-Powered Nutrition Tracking</h2>
+            <p class="project-description">AI-powered nutrition tracking app with food photo recognition, JWT-secured API, and real user deployment.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Spring Boot 3</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">JWT</span>
+              <span class="tech-badge">HuggingFace</span>
+              <span class="tech-badge">Flutter</span>
+              <span class="tech-badge">Docker</span>
+            </div>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/calorie-tracker-backend'">GitHub</button>
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://calcounter-rec.web.app/'">Live App</button>
@@ -116,6 +141,14 @@
               <img src="./assets/project-2.jpeg" alt="LogiBridge Project" class="project-img">
             </div>
             <h2 class="experience-sub-title project-title">LogiBridge — B2B Order Management Platform</h2>
+            <p class="project-description">B2B order management platform with dual-layer idempotency and optimistic + pessimistic locking.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Spring Boot 3</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Redis</span>
+              <span class="tech-badge">Docker</span>
+            </div>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/logibridge-backend'">GitHub</button>
             </div>
@@ -125,6 +158,15 @@
               <img src="./assets/project-3.png" alt="E-Commerce Backend Project" class="project-img">
             </div>
             <h2 class="experience-sub-title project-title">E-Commerce Backend System</h2>
+            <p class="project-description">Event-driven backend with idempotent Stripe payment webhooks and two-phase inventory reservation.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Spring Boot 3</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Redis</span>
+              <span class="tech-badge">Stripe</span>
+              <span class="tech-badge">Docker</span>
+            </div>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/ecommerce-backend'">GitHub</button>
             </div>
@@ -134,6 +176,15 @@
               <img src="./assets/project-4.png" alt="Attendance Management API Project" class="project-img">
             </div>
             <h2 class="experience-sub-title project-title">Attendance Management API — QR-Based Workforce Tracking</h2>
+            <p class="project-description">QR-based workforce attendance tracking with HMAC-signed sessions and scheduled reconciliation jobs.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Spring Boot 3</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Redis</span>
+              <span class="tech-badge">JWT</span>
+              <span class="tech-badge">Docker</span>
+            </div>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/attendance-management-api'">GitHub</button>
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://youtu.be/RaPOdxhk2Wg'">Demo Video</button>
@@ -144,6 +195,15 @@
               <img src="./assets/project-5.png" alt="University Timetable Scheduler Project" class="project-img">
             </div>
             <h2 class="experience-sub-title project-title">University Timetable Scheduler</h2>
+            <p class="project-description">Full-stack academic scheduling system with constraint-based generation and multi-format export.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Spring Boot 3</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Docker</span>
+            </div>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/Time-Table'">GitHub</button>
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://youtu.be/i8DS_dlUWkE'">Demo Video</button>
@@ -154,6 +214,14 @@
               <img src="./assets/project-6.png" alt="Distributed URL Shortener Project" class="project-img">
             </div>
             <h2 class="experience-sub-title project-title">Distributed URL Shortener</h2>
+            <p class="project-description">Redis-based distributed URL shortener with deterministic sharding, cache-aside reads, and atomic per-IP rate limiting.</p>
+            <div class="tech-stack">
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">Spring Boot 3</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">Raw JDBC</span>
+              <span class="tech-badge">Docker</span>
+            </div>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/MahmoudYoussef-web/url-shortener-system'">GitHub</button>
             </div>

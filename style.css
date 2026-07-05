@@ -318,6 +318,40 @@ section {
     gap: 1rem;
 }
 
+.social-btn-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-btn-row .btn {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+    min-width: 9rem;
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background: transparent;
+    white-space: nowrap;
+}
+
 /* ICONS  */
 
 .icon {
@@ -423,6 +457,18 @@ section {
     padding-left: 1.5rem;
     margin-bottom: 1rem;
     line-height: 1.6;
+}
+
+.about-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.about-summary {
+    margin-top: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-color-light);
 }
 
 .about-bullets li::before {
@@ -546,10 +592,37 @@ article div {
 }
 
 .project-title {
-    margin: 1rem;
+    margin: 1rem 1rem 0.5rem;
     color: var(--text-color);
     font-size: 1.25rem;
     flex: 1;
+}
+
+.project-description {
+    font-size: 0.85rem;
+    color: var(--text-color-light);
+    margin: 0 1rem 0.75rem;
+    line-height: 1.5;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0 1rem 0.75rem;
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background: transparent;
+    white-space: nowrap;
 }
 
 .project-btn {
