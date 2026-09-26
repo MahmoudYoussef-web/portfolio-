@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud Youssef — Backend Software Engineer</title>
+
+    <!-- Preconnect CDN -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <!-- Fonts Google: Plus Jakarta Sans & Space Mono -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+            rel="stylesheet">
+    </noscript>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Portfolio of Mahmoud Youssef, a Backend Software Engineer specializing in Java, Spring Boot, REST APIs, security, caching, and distributed systems. Based in Cairo, Egypt.">
+    <meta name="keywords"
+        content="Mahmoud Youssef, Backend Software Engineer, Java, Spring Boot, REST APIs, MySQL, Redis, Docker, Portfolio">
+    <meta name="author" content="Mahmoud Youssef">
+    <meta property="og:title" content="Mahmoud Youssef — Backend Software Engineer">
+    <meta property="og:description"
+        content="Building scalable backend systems and reliable digital products.">
+    <meta property="og:type" content="website">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Mahmoud Youssef — Backend Software Engineer">
+    <meta property="og:description"
+        content="Building scalable backend systems and reliable digital products.">
+    <meta property="og:type" content="website">
+
+    <!-- Structured Data (JSON-LD) for Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Mahmoud Youssef",
+      "jobTitle": "Backend Software Engineer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cairo",
+        "addressCountry": "EG"
+      }
+    }
+    </script>
+
+    <!-- Favicon Pill Navbar -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%230a0a0a%22/><circle cx=%2250%22 cy=%2250%22 r=%2225%22 fill=%22%23ffffff%22/></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Remixicon CDN -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    </noscript>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        mono: {
+                            bg: '#000000',
+                            card: '#09090b',
+                            border: '#27272a',
+                            subtle: '#18181b',
+                            muted: '#a1a1aa',
+                            light: '#f4f4f5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .bg-dot-grid {
+            background-image: radial-gradient(#27272a 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .glow-white {
+            box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+    <!-- SCRIPT ALPINE.JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body
+    class="bg-mono-bg text-mono-muted font-sans antialiased bg-dot-grid min-h-screen selection:bg-white selection:text-black">
+
+    <!-- 1. FLOATING NAVBAR -->
+    <div class="fixed top-5 inset-x-0 z-50 flex justify-center px-4" x-data="{ open: false }">
+        <nav
+            class="w-full max-w-3xl bg-mono-card/90 backdrop-blur-md border border-mono-border/80 rounded-full px-5 py-2.5 flex items-center justify-between shadow-2xl transition-all duration-300 hover:border-mono-muted/40">
+
+            <!-- Brand Logo -->
+            <a href="#" class="text-white font-semibold tracking-tight text-sm hover:opacity-80 transition">
+                mahmoud<span class="text-mono-muted">youssef</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden sm:flex items-center space-x-5 text-xs font-medium tracking-wide">
+                <a href="#about" class="nav-link text-mono-muted hover:text-white transition"
+                    data-target="about">ABOUT</a>
+                <a href="#capabilities" class="nav-link text-mono-muted hover:text-white transition"
+                    data-target="capabilities">SKILLS</a>
+                <a href="#work" class="nav-link text-mono-muted hover:text-white transition" data-target="work">WORK</a>
+                <a href="#experience" class="nav-link text-mono-muted hover:text-white transition"
+                    data-target="experience">EXPERIENCE</a>
+                <a href="#certificates" class="nav-link text-mono-muted hover:text-white transition"
+                    data-target="certificates">CERTIFICATES</a>
+            </div>
+
+            <!-- Bagian Kanan -->
+            <div class="flex items-center space-x-3">
+                <!-- Tombol CTA Solid -->
+                <a href="#contact"
+                    class="hidden sm:inline-flex items-center gap-2 text-xs font-medium bg-white text-black px-4 py-1.5 rounded-full hover:bg-slate-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] active:scale-95 transition-all duration-300 shadow-sm group">
+                    <span>GET IN TOUCH</span>
+                    <svg class="w-3.5 h-3.5 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                        fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"></path>
+                    </svg>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="menu-btn" class="sm:hidden text-white focus:outline-none p-1"
+                    aria-label="Toggle Navigation Menu">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-16 inset-x-4 bg-mono-card/95 backdrop-blur-lg border border-mono-border rounded-2xl p-5 shadow-2xl sm:hidden flex flex-col space-y-4 text-xs font-medium">
+            <a href="#about" class="mobile-link nav-link text-mono-muted hover:text-white transition py-1"
+                data-target="about">ABOUT</a>
+            <a href="#capabilities" class="mobile-link nav-link text-mono-muted hover:text-white transition py-1"
+                data-target="capabilities">SKILLS</a>
+            <a href="#work" class="mobile-link nav-link text-mono-muted hover:text-white transition py-1"
+                data-target="work">WORK</a>
+            <a href="#experience" class="mobile-link nav-link text-mono-muted hover:text-white transition py-1"
+                data-target="experience">EXPERIENCE</a>
+            <a href="#contact" class="mobile-link nav-link text-mono-muted hover:text-white transition py-1"
+                data-target="contact">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- 2. HERO SECTION -->
+    <section class="pt-28 sm:pt-32 pb-20 px-6 max-w-5xl mx-auto min-h-[85vh] flex flex-col justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+            <!-- Left Info -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <!-- Headline -->
+                <h1 class="text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.08]">
+                    Building scalable backend systems & <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-400 to-mono-muted animate-gradient bg-[length:200%_auto]">reliable digital products.</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-mono-muted text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+                    Hi, I’m <strong class="text-white font-medium">Mahmoud Youssef</strong>. A Backend Software
+                    Engineer focused on Java and Spring Boot — building production-oriented REST APIs with a focus
+                    on security, reliability, and scalability.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-3 pt-2 font-medium text-xs tracking-wide">
+                    <a href="#work"
+                        class="group px-6 py-3 bg-white text-black font-semibold rounded-xl hover:bg-slate-200 transition-all duration-300 shadow-lg shadow-white/5 flex items-center gap-2"
+                        aria-label="View Projects Section">
+                        <span>VIEW PROJECTS</span>
+                        <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                    </a>
+                    <a href="#contact"
+                        class="px-6 py-3 bg-mono-card border border-mono-border text-white rounded-xl hover:bg-mono-subtle hover:border-mono-muted/50 transition-all duration-300"
+                        aria-label="Get in Touch Section">
+                        GET IN TOUCH
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: Photo Card -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div
+                    class="w-full max-w-[400px] bg-mono-card/90 backdrop-blur-sm border border-mono-border/80 rounded-2xl overflow-hidden glow-white relative group h-[400px] flex flex-col justify-end p-6 hover:border-mono-muted/50 transition-all duration-500 rotate-2 hover:rotate-0 shadow-2xl">
+
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="img/profil.webp"
+                            alt="Mahmoud Youssef - Backend Software Engineer from Cairo"
+                            title="Mahmoud Youssef Portfolio Profile Picture"
+                            style="object-position: 50% 20%; transform: scale(1.5);"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.6] transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+
+                    <!-- Content Overlay -->
+                    <div class="relative z-10 space-y-2">
+                        <div class="flex items-center gap-2 font-mono text-xs">
+                            <span class="text-white font-bold tracking-wider">MAHMOUD YOUSSEF</span>
+                        </div>
+                        <p class="text-mono-muted text-xs font-sans">
+                            Backend Software Engineer based in Cairo, Egypt.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. ABOUT SECTION -->
+    <section id="about" class="scroll-mt-24 py-20 px-6 max-w-5xl mx-auto border-t border-white/10">
+
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-start justify-between mb-10 gap-4">
+            <div>
+                <span class="text-xs font-mono tracking-[0.25em] text-mono-muted uppercase block mb-3">ABOUT ME</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug max-w-2xl">
+                    Backend engineering focused on reliability, security, and scalability.
+                </h2>
+            </div>
+            <!-- Lokasi -->
+            <div class="font-mono text-xs text-mono-muted md:text-right pt-1">
+                Based in Cairo, EG
+            </div>
+        </div>
+
+        <!-- Two Columns Description -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-mono-muted leading-relaxed text-base font-normal mb-8">
+            <p>
+                I’m <strong class="text-white font-medium">Mahmoud Youssef</strong>, a Backend Software Engineer
+                focused on building reliable and scalable backend systems with <strong
+                    class="text-white font-medium">Java and Spring Boot</strong>. I build production-oriented REST
+                APIs and backend platforms, with hands-on work in authentication, security, caching, concurrency,
+                idempotency, distributed systems, and asynchronous processing.
+            </p>
+            <p>
+                My projects include systems such as distributed URL shorteners, real-time messaging platforms,
+                e-commerce backends, and other API-driven applications with <strong
+                    class="text-white font-medium">documented architecture and engineering trade-offs</strong>. I’m
+                currently looking for backend and software engineering opportunities where I can work on real-world
+                systems and solve challenging technical problems.
+            </p>
+        </div>
+
+        <!-- Quick Tech -->
+        <div class="pt-6 border-t border-white/5 flex flex-wrap items-center gap-3">
+            <span class="text-xs font-mono text-mono-muted uppercase tracking-wider">CORE FOCUS:</span>
+            <span
+                class="px-2.5 py-1 text-xs font-mono bg-mono-subtle border border-mono-border rounded text-white/80">API
+                Design & Backend Engineering</span>
+            <span
+                class="px-2.5 py-1 text-xs font-mono bg-mono-subtle border border-mono-border rounded text-white/80">Security
+                & Distributed Systems</span>
+            <span
+                class="px-2.5 py-1 text-xs font-mono bg-mono-subtle border border-mono-border rounded text-white/80">Performance,
+                Reliability & Scalability</span>
+        </div>
+
+    </section>
+
+    <!-- 4. CAPABILITIES SECTION -->
+    <section id="capabilities" class="py-20 px-6 max-w-5xl mx-auto border-t border-white/10">
+        <!-- Section Header -->
+        <div class="mb-12">
+            <span class="text-xs font-mono tracking-[0.25em] text-mono-muted uppercase block mb-2">TECHNICAL
+                FOCUS</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Backend Stack & Specializations
+            </h2>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Card 1: Backend Engineering -->
+            <div
+                class="bg-mono-card/60 border border-mono-border rounded-xl p-6 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition">
+                        Backend Engineering
+                    </h3>
+                    <p class="text-mono-muted text-sm leading-relaxed mb-6">
+                        Production-oriented REST APIs with Java and Spring Boot, focused on clean architecture and
+                        reliability.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Security">Spring Security</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">REST APIs</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hibernate/hibernate-original.svg" class="w-3.5 h-3.5" alt="Hibernate">JPA / Hibernate</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">JdbcTemplate</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">WebSocket / STOMP</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">MapStruct</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">JJWT</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Data & Distributed State -->
+            <div
+                class="bg-mono-card/60 border border-mono-border rounded-xl p-6 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition">
+                        Data & Distributed State
+                    </h3>
+                    <p class="text-mono-muted text-sm leading-relaxed mb-6">
+                        Relational modeling, migrations, caching, sharding, and concurrency-safe persistence.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-3.5 h-3.5" alt="PostgreSQL">PostgreSQL 16</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis 7</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">H2</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/flyway.svg" class="w-3.5 h-3.5 invert" alt="Flyway">Flyway</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Caffeine</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Security & Reliability -->
+            <div
+                class="bg-mono-card/60 border border-mono-border rounded-xl p-6 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition">
+                        Security & Reliability
+                    </h3>
+                    <p class="text-mono-muted text-sm leading-relaxed mb-6">
+                        Auth, isolation, idempotency, and safe retries for systems that must stay correct under load.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/jsonwebtokens.svg" class="w-3.5 h-3.5 invert" alt="JWT">JWT</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">OAuth2 / OIDC</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">RBAC</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Refresh Rotation</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Idempotency</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Rate Limiting</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Tenant Isolation</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Webhook Verify</span>
+                </div>
+            </div>
+
+            <!-- Card 4: Cloud & Infrastructure -->
+            <div
+                class="bg-mono-card/60 border border-mono-border rounded-xl p-6 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition">
+                        Cloud & Infrastructure
+                    </h3>
+                    <p class="text-mono-muted text-sm leading-relaxed mb-6">
+                        Containerized services, identity, object storage, observability, and deployment pipelines.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker">Docker</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker Compose">Docker Compose</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/render.svg" class="w-3.5 h-3.5 invert" alt="Render">Render</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/railway.svg" class="w-3.5 h-3.5 invert" alt="Railway">Railway</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/githubactions.svg" class="w-3.5 h-3.5 invert" alt="GitHub Actions">GitHub Actions</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/keycloak.svg" class="w-3.5 h-3.5 invert" alt="Keycloak">Keycloak</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/minio.svg" class="w-3.5 h-3.5 invert" alt="MinIO">MinIO</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" class="w-3.5 h-3.5" alt="Prometheus">Prometheus</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" class="w-3.5 h-3.5" alt="Grafana">Grafana</span>
+                </div>
+            </div>
+
+            <!-- Card 5: Frontend & Mobile (Familiar) -->
+            <div
+                class="bg-mono-card/60 border border-mono-border rounded-xl p-6 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition">
+                        Frontend & Mobile <span class="text-mono-muted text-xs font-mono font-normal">· Familiar</span>
+                    </h3>
+                    <p class="text-mono-muted text-sm leading-relaxed mb-6">
+                        API consumers for backend systems — not a core backend skill. Angular 19 as client only.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-3.5 h-3.5" alt="React">React</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="w-3.5 h-3.5" alt="TypeScript">TypeScript</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Vite</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-3.5 h-3.5" alt="Tailwind CSS">Tailwind CSS</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" class="w-3.5 h-3.5" alt="Flutter">Flutter</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-3.5 h-3.5" alt="Angular">Angular 19</span>
+                </div>
+            </div>
+
+            <!-- Card 6: Tools & Testing -->
+            <div
+                class="bg-mono-card/60 border border-mono-border rounded-xl p-6 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition">
+                        Tools & Testing
+                    </h3>
+                    <p class="text-mono-muted text-sm leading-relaxed mb-6">
+                        API design, verification, and quality gates for production-oriented backends.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-3.5 h-3.5" alt="Git">Git / GitHub</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" class="w-3.5 h-3.5" alt="Maven">Maven</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" class="w-3.5 h-3.5" alt="Swagger">Swagger / OpenAPI</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" class="w-3.5 h-3.5" alt="Postman">Postman</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg" class="w-3.5 h-3.5" alt="JUnit">JUnit 5</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Testcontainers</span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/stripe.svg" class="w-3.5 h-3.5 invert" alt="Stripe">Stripe</span>
+                    <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Micrometer</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. SELECTED WORK SECTION -->
+    <section id="work" class="scroll-mt-24 py-20 px-6 max-w-5xl mx-auto border-t border-white/15">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+            <div>
+                <span class="text-xs font-mono tracking-[0.25em] text-mono-muted uppercase block mb-2">SELECTED
+                    WORK</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Projects</h2>
+            </div>
+            <span class="font-mono text-xs text-mono-muted">BACKEND · SYSTEM DESIGN</span>
+        </div>
+
+        <!-- Projects Grid Stack -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Project 1: Distributed URL Shortener -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <!-- Preview Image -->
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <div
+                                class="absolute top-2 right-2 z-10 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono text-white/90 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/20 flex items-center gap-1 shadow-lg">
+                                <span>🔍</span> ZOOM
+                            </div>
+                            <img src="img/url-shortener.webp" alt="Distributed URL Shortener — SnipLink short links that are easy to share and track" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase">DISTRIBUTED
+                            SYSTEM · BACKEND</span>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Completed · v1.0.0</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">Distributed
+                        URL Shortener</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Production-oriented URL shortener with Java 21, Spring Boot 3, MySQL sharding, Redis, and
+                        Docker. Custom aliases, expiration, click stats, and Lua-based per-IP rate limiting.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        hash(shortCode) % N routing · Base62 from Redis INCR · cache-aside with expiry-aware TTL
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8 · 2 shards</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis 7</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker">Docker</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/url-shortener-system" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit Distributed URL Shortener repository">
+                                GITHUB ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: E-commerce Backend -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <!-- Preview Image -->
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <div
+                                class="absolute top-2 right-2 z-10 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono text-white/90 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/20 flex items-center gap-1 shadow-lg">
+                                <span>🔍</span> ZOOM
+                            </div>
+                            <img src="img/ecommerce.webp" alt="E-commerce storefront — NOVA home with new arrivals" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">E-COMMERCE
+                        BACKEND · MULTI-TENANT</span>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Completed</span>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Personal project</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">E-commerce Backend</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Multi-tenant e-commerce backend with Java 21 and Spring Boot 3: catalog, cart, 15-min stock
+                        reservations, Stripe Checkout + verified webhooks, COD, double-entry accounting, and RBAC.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        PESSIMISTIC_WRITE + retry ×3 · idempotent payments · tenant isolation · 112 tests
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3.2.5</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8 · Flyway</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis 7</span>
+                            <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">Stripe</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/ecommerce-backend" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit E-commerce Backend repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/d2A5RyFmRRE" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch E-commerce Backend demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: WhatsApp Clone -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <!-- Preview Image -->
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <div
+                                class="absolute top-2 right-2 z-10 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono text-white/90 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/20 flex items-center gap-1 shadow-lg">
+                                <span>🔍</span> ZOOM
+                            </div>
+                            <img src="img/whatsapp.webp" alt="WhatsApp Clone realtime messaging — dark chat UI with delivery receipts" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <div class="flex items-center gap-2 mb-1.5">
+                        <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase">REALTIME
+                            MESSAGING · BACKEND</span>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Completed · v1.0.0</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">WhatsApp Clone — Realtime API</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Realtime messaging with Spring Boot, WebSocket/STOMP, PostgreSQL, Redis presence, MinIO media,
+                        and Keycloak. Guarded SENT → DELIVERED → READ semantics and 84 tests.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        session identity · cursor pagination · atomic unread counters · presigned media
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3.4</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-3.5 h-3.5" alt="PostgreSQL">PostgreSQL 16</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis · Keycloak</span>
+                            <span class="px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted">MinIO</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/whatsapp-clone-realtime-api" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit WhatsApp Clone repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/sQ1lk4SupzI" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch WhatsApp Clone demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: LogiBridge -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <!-- Preview Image -->
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <div
+                                class="absolute top-2 right-2 z-10 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono text-white/90 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/20 flex items-center gap-1 shadow-lg">
+                                <span>🔍</span> ZOOM
+                            </div>
+                            <img src="img/logibridge.webp" alt="LogiBridge delivery platform — landing and live manifest" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">DELIVERY
+                        PLATFORM · BACKEND</span>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Completed · v1.0.0</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">LogiBridge — Delivery Integration Platform</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Delivery workflow connecting companies and providers: assign, accept, track, deliver, cancel,
+                        with admin overrides. Idempotency, pessimistic + optimistic locking, and state-machine validation.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        DB + Redis idempotency · immutable tracking · JWT rotation
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21 · Spring Boot 3</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-3.5 h-3.5" alt="PostgreSQL">PostgreSQL · Redis</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker">JPA · Docker</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/logibridge-backend" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit LogiBridge repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/qIEnAIhR5g4" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch LogiBridge demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: BloodBridge -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <!-- Preview Image -->
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <div
+                                class="absolute top-2 right-2 z-10 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono text-white/90 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/20 flex items-center gap-1 shadow-lg">
+                                <span>🔍</span> ZOOM
+                            </div>
+                            <img src="img/bloodbridge.webp" alt="BloodBridge — heroes come in all blood types landing" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">DONATION
+                        MATCHING · BACKEND</span>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Completed · v1.0.0</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">BloodBridge — Donation Matching API
+                    </h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Urgent blood-request matching with progressive-radius search, QR-verified admission, optional
+                        ML scoring with rule fallback, and Outbox reliable events. 55 endpoints, 169 tests.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        25km expansion · single-use QR · circuit breaker · org isolation
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3.3</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8 · Flyway</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis · Prometheus</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/bloodbridge-api" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit BloodBridge repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/FBtXyC0d9Hs" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch BloodBridge demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: CalCounter -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <!-- Preview Image -->
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <div
+                                class="absolute top-2 right-2 z-10 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono text-white/90 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/20 flex items-center gap-1 shadow-lg">
+                                <span>🔍</span> ZOOM
+                            </div>
+                            <img src="img/calcounter.webp" alt="CalCounter graduation project — capture your food upload screen" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <!-- Details -->
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">GRADUATION
+                        PROJECT · BACKEND</span>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Completed · Graduation Project 2026</span>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Academic</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">CalCounter — AI Nutrition Tracking</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        AI nutrition tracking: meal photos → async HuggingFace EfficientNetB3/Food-101 analysis,
+                        calorie estimation, meals, BMI, dashboards, and progress. Java 21, Boot 3.5, MySQL 8, Docker/Render.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        @Async 202 + polling · retry · DailySummary recalculation
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21 · Boot 3.5</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" class="w-3.5 h-3.5" alt="Flutter">Flutter · Docker</span>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/calorie-tracker-backend" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit CalCounter repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://calcounter-rec.web.app/" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Open CalCounter live demo">
+                                LIVE DEMO ↗
+                            </a>
+                            <a href="https://youtu.be/R5qRao_UabE" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Watch CalCounter demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7: Time-Table Scheduler -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <img src="img/timetable.webp" alt="Time-Table academic scheduler — build timetables in minutes" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">SCHEDULING
+                        PLATFORM · FULL-STACK</span>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">Time-Table — Academic Scheduler</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        University timetabling with Spring Boot 3.2 and a genetic algorithm (7 hard + 5 soft
+                        constraints), schedule lifecycle DRAFT → LOCKED, JWT roles, analytics, and PDF/Excel/PNG export.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        tournament selection · async generation · React admin SPA
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3.2</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-3.5 h-3.5" alt="React">React 18</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker">Docker</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/Time-Table" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit Time-Table repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/i8DS_dlUWkE" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch Time-Table demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: Sofra Restaurant Reservations -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <img src="img/sofra.webp" alt="Sofra restaurant reservations — discover where to eat in Cairo" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">RESERVATIONS
+                        PLATFORM · BACKEND</span>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">Sofra — Restaurant Reservations</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Reservation platform with Spring Boot 3.3.5: table booking with conflict checks, approval
+                        workflow, live menu, auto invoices, verified reviews, JWT + refresh, Flyway V1–V6, 79 tests.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        state machine · sliding-window rate limiting · Actuator
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3.3.5</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-3.5 h-3.5" alt="MySQL">MySQL 8 · Flyway</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker">Docker</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/restaurant-reservation-system" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit Sofra repository">
+                                GITHUB ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: QuRadar Traffic Enforcement -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10]">
+                            <img src="img/quradar.webp" alt="QuRadar traffic enforcement — every observation judged" loading="lazy"
+                                onclick="openZoom(this.src)"
+                                class="w-full h-full object-cover object-center cursor-zoom-in grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-500">
+                        </div>
+                    </div>
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">ENFORCEMENT
+                        API · BACKEND</span>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">QuRadar — Traffic Rules API</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Radar observations judged against versioned rules: priced, attributable fines pinned to rule
+                        versions, composite (device, event) idempotency, optimistic locking, Redis fail-open limits, audit trail.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        Postgres 16 · Redis 24h idempotency · derived device health
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-3.5 h-3.5" alt="PostgreSQL">PostgreSQL 16</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-3.5 h-3.5" alt="Docker">Docker</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/quantum-radar-admin" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit QuRadar repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/2Y3HvoidlQQ" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch QuRadar demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. EDUCATION & EXPERIENCE SECTION -->
+    <section id="experience" class="scroll-mt-24 py-20 px-6 max-w-5xl mx-auto border-t border-white/10">
+
+        <!-- Section Header -->
+        <div class="mb-16">
+            <span class="text-xs font-mono tracking-[0.25em] text-mono-muted uppercase block mb-3">BACKGROUND</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                Education & Training.
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <!-- KOLOM KIRI: EDUCATION -->
+            <div class="space-y-12 relative border-l border-white/10 pl-6 ml-2">
+                <h3 class="text-xs font-mono text-mono-muted tracking-wider uppercase -ml-6 mb-6 pl-6">EDUCATION</h3>
+
+                <!-- Item 1 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-black border-2 border-white/40 group-hover:border-white transition-colors">
+                    </div>
+                    <div class="flex items-center justify-between gap-3 mb-2">
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-xs font-mono text-mono-muted">Expected 2026</span>
+                        </div>
+                        <span
+                            class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Computer
+                            Science</span>
+                    </div>
+                    <h4 class="text-base font-bold text-white">El Shorouk Academy</h4>
+                    <p class="text-xs font-mono text-mono-muted mt-0.5">Computer Science student</p>
+                    <p class="text-xs text-mono-muted mt-2 leading-relaxed">Graduation project: CalCounter — Intelligent
+                        Nutrition & Calorie Tracking System (Backend Engineer).</p>
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN: TRAINING -->
+            <div class="space-y-12 relative border-l border-white/10 pl-6 ml-2">
+                <h3 class="text-xs font-mono text-mono-muted tracking-wider uppercase -ml-6 mb-6 pl-6">TRAINING</h3>
+
+                <!-- Item 1 -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-black border-2 border-white/40 group-hover:border-white transition-colors">
+                    </div>
+                    <div class="flex items-center justify-between gap-3 mb-2">
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-xs font-mono text-mono-muted">4-month program</span>
+                        </div>
+                        <span
+                            class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white">Professional Training</span>
+                    </div>
+                    <h4 class="text-base font-bold text-white">Information Technology Institute (ITI), Egypt</h4>
+                    <p class="text-xs font-mono text-mono-muted mt-0.5">CS50 — Introduction to Computer Science</p>
+                    <p class="text-xs text-mono-muted mt-2 leading-relaxed">Core CS fundamentals: programming,
+                        algorithms, data structures, memory, databases, and software development concepts.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. CERTIFICATES & CREDENTIALS SECTION -->
+    <section id="certificates" class="scroll-mt-24 py-16 px-6 max-w-5xl mx-auto border-t border-white/10">
+
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+            <div>
+                <span
+                    class="text-xs font-mono tracking-[0.25em] text-mono-muted uppercase block mb-2">CREDENTIALS</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                    Certifications & Courses.
+                </h2>
+            </div>
+            <span class="font-mono text-xs text-mono-muted">FORMAL · TRAINING · SELF-STUDY</span>
+        </div>
+
+        <!-- Certificates Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <!-- Cert Item 1 -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <div class="flex items-center gap-2">
+                            <!-- Google Cloud Icon -->
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#4285F4"
+                                    d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+                            </svg>
+                            <span>Harvard University • 2025</span>
+                        </div>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/10 text-white border border-white/20 rounded">CERTIFICATION</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        CS50x — Introduction to Computer Science
+                    </h3>
+                </div>
+
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Formal certification</span>
+                    <a href="https://cs50.harvard.edu/certificates/63b3eb88-22cf-41b1-8076-9557c0d1924d" target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-xs font-mono text-white inline-flex items-center gap-1 hover:underline">
+                        VERIFY ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cert Item 2 -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <div class="flex items-center gap-2">
+                            <!-- Google Cloud Icon -->
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#4285F4"
+                                    d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+                            </svg>
+                            <span>TaKenda Courses • June 21, 2025</span>
+                        </div>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/10 text-white border border-white/20 rounded">TRAINING</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        Soft Skills — Certificate of Completion (Excellent)
+                    </h3>
+                </div>
+
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Interviewing · Leadership · Time Mgmt</span>
+                    <span class="text-[11px] font-mono text-mono-muted">Grade: Excellent</span>
+                </div>
+            </div>
+
+            <!-- Cert Item 3 -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <div class="flex items-center gap-2">
+                            <!-- Google Cloud Icon -->
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#4285F4"
+                                    d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+                            </svg>
+                            <span>Udemy · Eazy Bytes · Mar 1, 2026 · 15h</span>
+                        </div>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/5 text-mono-muted border border-white/10 rounded">COURSE</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        Spring Security 6 Zero to Master with JWT, OAuth2
+                    </h3>
+                </div>
+
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Relevant course / self-study</span>
+                    <span class="text-[11px] font-mono text-mono-muted">UC-84ef472c</span>
+                </div>
+            </div>
+
+            <!-- Cert Item 4 -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <div class="flex items-center gap-2">
+                            <!-- Google Cloud Icon -->
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#4285F4"
+                                    d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+                            </svg>
+                            <span>Udemy · KodeKloud · Feb 9, 2026 · 4.5h</span>
+                        </div>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/5 text-mono-muted border border-white/10 rounded">COURSE</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        Docker for the Absolute Beginner – Hands On
+                    </h3>
+                </div>
+
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Relevant course / self-study</span>
+                    <span class="text-[11px] font-mono text-mono-muted">UC-7703f25d</span>
+                </div>
+            </div>
+
+            <!-- Cert Item 5: ITI Training -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <span>ITI · 4-month program</span>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/10 text-white border border-white/20 rounded">TRAINING</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        CS50-based Professional Training — Information Technology Institute
+                    </h3>
+                </div>
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Professional training</span>
+                    <span class="text-[11px] font-mono text-mono-muted">Details missing</span>
+                </div>
+            </div>
+
+            <!-- Cert Item 6 -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <span>Udemy · Chad Darby · Sep 2025 · 30h</span>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/5 text-mono-muted border border-white/10 rounded">COURSE</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        Spring Boot 3, Spring 6 & Hibernate for Beginners
+                    </h3>
+                </div>
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Relevant course / self-study</span>
+                </div>
+            </div>
+
+            <!-- Cert Item 7 -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-[11px] font-mono text-mono-muted">
+                        <span>Udemy · Chad Darby · Jan 4, 2026 · 9h 51m</span>
+                        <span
+                            class="px-2 py-0.5 text-[9px] font-mono bg-white/5 text-mono-muted border border-white/10 rounded">COURSE</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white group-hover:text-slate-200 transition leading-snug">
+                        JavaScript Unit Testing — The Practical Guide
+                    </h3>
+                </div>
+                <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-mono-muted">Relevant course / self-study</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. CONTACT SECTION -->
+    <section id="contact" class="scroll-mt-24 py-24 px-6 max-w-4xl mx-auto border-t border-white/10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+            <!-- Left: Headline & Description -->
+            <div class="md:col-span-5 space-y-4">
+                <div class="font-mono text-xs text-mono-muted uppercase tracking-widest">GET IN TOUCH</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Let's Build Reliable Systems.</h2>
+                <p class="text-mono-muted text-sm leading-relaxed">
+                    Open to backend engineering opportunities, remote roles, and international opportunities.
+                </p>
+                <p class="font-mono text-xs text-mono-muted">Based in Cairo, Egypt</p>
+            </div>
+
+            <!-- Right: Action Cards -->
+            <div class="md:col-span-7 flex flex-col gap-4">
+
+                <!-- Email Primary Card -->
+                <a href="mailto:mahmoudyoussed29@gmail.com"
+                    class="group bg-mono-card border border-mono-border p-5 rounded-xl hover:border-white/40 transition duration-300 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="p-3 bg-mono-subtle rounded-lg text-xl text-mono-muted group-hover:text-white transition">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <div>
+                            <div class="font-mono text-xs text-mono-muted">Direct Email</div>
+                            <div class="text-white font-medium text-sm">mahmoudyoussed29@gmail.com</div>
+                        </div>
+                    </div>
+                    <i
+                        class="ri-arrow-right-up-line text-mono-muted group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300"></i>
+                </a>
+
+                <!-- Social Links -->
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- GitHub -->
+                    <a href="https://github.com/MahmoudYoussef-dev/" target="_blank" rel="noopener noreferrer"
+                        class="group bg-mono-card border border-mono-border p-4 rounded-xl hover:border-white/40 transition duration-300 flex flex-col items-center text-center gap-2">
+                        <i class="ri-github-line text-xl text-mono-muted group-hover:text-white transition"></i>
+                        <span class="font-mono text-xs text-mono-muted group-hover:text-white transition">GitHub</span>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/mahmoud-youssef-dev/" target="_blank" rel="noopener noreferrer"
+                        class="group bg-mono-card border border-mono-border p-4 rounded-xl hover:border-white/40 transition duration-300 flex flex-col items-center text-center gap-2">
+                        <i class="ri-linkedin-box-line text-xl text-mono-muted group-hover:text-white transition"></i>
+                        <span
+                            class="font-mono text-xs text-mono-muted group-hover:text-white transition">LinkedIn</span>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/mmahmoud_youssef/" target="_blank" rel="noopener noreferrer"
+                        class="group bg-mono-card border border-mono-border p-4 rounded-xl hover:border-white/40 transition duration-300 flex flex-col items-center text-center gap-2">
+                        <i class="ri-instagram-line text-xl text-mono-muted group-hover:text-white transition"></i>
+                        <span
+                            class="font-mono text-xs text-mono-muted group-hover:text-white transition">Instagram</span>
+                    </a>
+                </div>
+
+                <!-- Resume CTA (hidden until public URL is provided) -->
+                <!-- TODO: replace href with real public resume URL and remove aria-disabled + opacity -->
+                <span
+                    class="hidden items-center justify-center gap-2 text-xs font-medium border border-mono-border text-mono-muted px-4 py-3 rounded-xl opacity-50 cursor-not-allowed"
+                    aria-disabled="true" title="Resume URL missing — add public link to enable">
+                    DOWNLOAD RESUME · COMING SOON
+                </span>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 border-t border-mono-border text-center font-mono text-xs text-mono-muted">
+        <div class="max-w-5xl mx-auto px-6">
+            <p>© 2026 Mahmoud Youssef. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 1. LIGHTBOX / ZOOM MODAL -->
+    <div id="imageModal" onclick="closeZoomOnBackdrop(event)"
+        class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 sm:p-8 transition-all duration-300 opacity-0 pointer-events-none">
+
+        <!-- Close Button -->
+        <button onclick="closeZoom()"
+            class="absolute top-6 right-6 text-white/70 hover:text-white font-mono text-sm bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition border border-white/10 z-10"
+            aria-label="Close image zoom modal">
+            ESC / CLOSE [X]
+        </button>
+
+        <!-- Image Container -->
+        <div class="relative max-w-5xl w-full max-h-[85vh] flex items-center justify-center"
+            onclick="event.stopPropagation()">
+            <img id="modalImg" src="" alt="Zoomed Preview"
+                class="max-w-full max-h-[85vh] object-contain rounded-xl border border-white/20 shadow-2xl">
+        </div>
+    </div>
+
+    <!-- 2. FLOATING BUTTON & MODAL CONTAINER -->
+    <div x-data="{ openModal: false }" class="relative">
+
+        <!-- Floating Trigger Button -->
+        <button @click="openModal = true"
+            class="fixed left-0 top-1/2 -translate-y-1/2 z-50 bg-mono-card border border-mono-border text-white px-3 py-4 rounded-r-xl shadow-2xl hover:border-white/50 transition-all duration-300 flex flex-col items-center gap-2 group">
+            <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            <span class="text-[10px] font-mono tracking-widest [writing-mode:vertical-lr]">GITHUB STATS</span>
+        </button>
+
+        <!-- Modal / Popup Overlay -->
+        <div x-show="openModal" x-transition.opacity
+            class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+
+            <!-- Modal Content Box -->
+            <div @click.away="openModal = false"
+                class="bg-mono-card border border-mono-border rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 relative shadow-2xl">
+
+                <!-- Close Button -->
+                <button @click="openModal = false"
+                    class="absolute top-4 right-4 text-mono-muted hover:text-white p-2 rounded-lg bg-mono-subtle border border-mono-border transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <!-- Modal Header -->
+                <div class="space-y-1">
+                    <span class="text-xs font-mono tracking-[0.25em] text-mono-muted uppercase">ACTIVITY &
+                        METRICS</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white">GitHub Contributions & Summary</h3>
+                </div>
+
+                <!-- Stats Items Container -->
+                <div class="space-y-4">
+
+                    <!-- 1. Top Languages -->
+                    <div class="space-y-1.5">
+                        <h4 class="text-xs font-mono text-mono-muted uppercase">Top Languages</h4>
+                        <div
+                            class="bg-mono-subtle border border-mono-border rounded-xl p-3 overflow-x-auto flex justify-center">
+                            <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=MahmoudYoussef-dev&theme=tokyonight" alt="Top Languages"
+                                class="w-full max-w-2xl" loading="lazy">
+                        </div>
+                    </div>
+
+                    <!-- 2. Grid 2 Kolom -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                        <!-- Profile Summary Card -->
+                        <div class="space-y-1.5 flex flex-col">
+                            <h4 class="text-xs font-mono text-mono-muted uppercase">Profile Summary</h4>
+                            <div
+                                class="bg-mono-subtle border border-mono-border rounded-xl p-3 overflow-x-auto flex justify-center flex-1 items-center">
+                                <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MahmoudYoussef-dev&theme=tokyonight"
+                                    alt="GitHub Profile Summary" class="w-full max-w-sm">
+                            </div>
+                        </div>
+
+                        <!-- Contribution Streak Card -->
+                        <div class="space-y-1.5 flex flex-col">
+                            <h4 class="text-xs font-mono text-mono-muted uppercase">Contribution Streak</h4>
+                            <div
+                                class="bg-mono-subtle border border-mono-border rounded-xl p-3 overflow-x-auto flex justify-center flex-1 items-center">
+                                <img src="https://streak-stats.demolab.com/?user=MahmoudYoussef-dev&theme=transparent&hide_border=true&stroke=ffffff&text=ffffff&fire=ffffff&sideNums=ffffff" loading="lazy"
+                                    alt="GitHub Streak" class="w-full max-w-sm">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Footer Modal -->
+                <p class="text-xs font-mono text-mono-muted text-center pt-2">
+                    Constantly Building, Experimenting, and Pushing Code.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. SCRIPT IMAGE LIGHTBOX / ZOOM ---
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+
+        function openZoom(src) {
+            modalImg.src = src;
+            modal.classList.remove('hidden', 'pointer-events-none');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeZoom() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden', 'pointer-events-none');
+                modal.classList.remove('flex');
+                modalImg.src = '';
+            }, 300);
+        }
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeZoom();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeZoom();
+        });
+
+        // --- 2. SCRIPT MOBILE MENU & SCROLLSPY ---
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (menu) menu.classList.add('hidden');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.scrollY;
+
+            const isAtBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50;
+
+            if (isAtBottom) {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('data-target') === 'contact') {
+                        link.classList.remove('text-mono-muted');
+                        link.classList.add('text-white');
+                    } else {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-mono-muted');
+                    }
+                });
+                return;
+            }
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 120;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        if (link.getAttribute('data-target') === sectionId) {
+                            link.classList.remove('text-mono-muted');
+                            link.classList.add('text-white');
+                        } else {
+                            link.classList.remove('text-white');
+                            link.classList.add('text-mono-muted');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
