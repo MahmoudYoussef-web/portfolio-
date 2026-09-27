@@ -968,6 +968,55 @@
                 </div>
             </div>
 
+            <!-- Project 10: TaskFlow Board & Reminders -->
+            <div
+                class="bg-mono-card border border-mono-border rounded-xl overflow-hidden hover:border-white/40 transition-all duration-300 group flex flex-col justify-between p-6 sm:p-8 glow-white">
+                <div>
+                    <div
+                        class="w-full rounded-lg overflow-hidden border border-white/10 bg-mono-subtle p-2 mb-5 relative group/img">
+                        <div
+                            class="rounded-md overflow-hidden relative border border-white/10 bg-black/40 aspect-[16/10] flex items-center justify-center">
+                            <span class="font-mono text-[11px] text-mono-muted tracking-wider px-4 text-center">SCREENSHOT PLACEHOLDER — REPLACEABLE</span>
+                        </div>
+                    </div>
+                    <span class="font-mono text-[10px] text-mono-muted tracking-wider uppercase block mb-1.5">TASK
+                        BOARD · SCHEDULING BACKEND</span>
+                    <h3 class="text-xl font-bold text-white group-hover:text-slate-200 transition mb-2.5">TaskFlow — Board & Reminders</h3>
+                    <p class="text-mono-muted text-xs leading-relaxed mb-3">
+                        Trello-style board where every due date becomes a ScheduledJob: Redis-locked workers
+                        (SET NX EX + Lua release), exponential-backoff retry, Postgres idempotency keys, optimistic
+                        locking with 409s, domain events, and audit trails.
+                    </p>
+                    <p class="font-mono text-[11px] text-mono-muted leading-relaxed mb-6">
+                        fail-closed locks · 5-attempt retry · trace ids · 7 unit + 4 integration tests
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-white/5">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px] items-center">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-3.5 h-3.5" alt="Java">Java 21</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-3.5 h-3.5" alt="Spring Boot">Spring Boot 3.2.5</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-3.5 h-3.5" alt="PostgreSQL">PostgreSQL 16</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="w-3.5 h-3.5" alt="Redis">Redis 7</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-mono-subtle border border-mono-border rounded text-mono-muted"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-3.5 h-3.5" alt="React">React 18</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/MahmoudYoussef-web/TaskFlow" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-mono-subtle border border-mono-border text-white font-semibold text-xs rounded-lg hover:border-white/40 transition shrink-0"
+                                aria-label="Visit TaskFlow repository">
+                                GITHUB ↗
+                            </a>
+                            <a href="https://youtu.be/VDOKjDDerXg" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-white text-black font-semibold text-xs rounded-lg hover:bg-slate-200 transition shrink-0"
+                                aria-label="Watch TaskFlow demo">
+                                WATCH DEMO ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
